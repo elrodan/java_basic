@@ -23,10 +23,6 @@ public class Basket {
         this.totalPrice = totalPrice;
     }
 
-    public Basket(double weight) {
-
-    }
-
     public static int getCount() {
         return count;
     }
