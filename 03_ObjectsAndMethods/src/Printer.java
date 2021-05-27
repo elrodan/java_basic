@@ -2,6 +2,8 @@ public class Printer {
     private String queue = "";
     private int totalPagesCount = 0;
     private int documentsCount = 0;
+    private int allDocumentsCount = 0;
+    private int allPagesCount = 0;
     private String allDocumentObject = "";
 
     public void append(String text) {
@@ -26,6 +28,13 @@ public class Printer {
         this.documentsCount = 0;
     }
 
+    public String getAllDocumentObject() {
+        this.allDocumentsCount = allDocumentsCount + documentsCount;
+        this.allPagesCount = allPagesCount + totalPagesCount;
+        allDocumentObject = "Напечатано " + allDocumentsCount + " документов и " + allPagesCount + " страниц";
+        return allDocumentObject;
+    }
+
     public void print() {
         System.out.println("Очередь печати:");
         if (queue.isEmpty()) {
@@ -33,8 +42,7 @@ public class Printer {
         } else {
             System.out.println(queue);
         }
-        allDocumentObject = "Напечатано " + documentsCount + " документов и " + totalPagesCount + " страниц";
-        System.out.println(allDocumentObject);
+        getAllDocumentObject();
         clear();
     }
 
