@@ -7,13 +7,11 @@ public class Printer {
     private String allDocumentObject = "";
 
     public void append(String text) {
-        this.queue = this.queue + "\n" + text;
-        this.documentsCount = documentsCount + 1;
+        append(text, "", 1);
     }
 
     public void append(String text, String name) {
-        this.queue = this.queue + "\n" + text + " '" + name + "'"  ;
-        this.documentsCount = documentsCount + 1;
+        append(text, name, 1);
     }
 
     public void append(String text, String name, int pagesCount) {

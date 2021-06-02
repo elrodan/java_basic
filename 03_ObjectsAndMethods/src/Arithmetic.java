@@ -1,6 +1,4 @@
 public class Arithmetic {
-    private String title = "";
-    private double result = 0;
     private double a = 0;
     private double b = 0;
     public Arithmetic(double x, double y) {
@@ -8,46 +6,36 @@ public class Arithmetic {
         b = y;
     }
 
-    public void summ() {
-        result = a + b;
-        title = "Сумма чисел: " + result;
+    public double summ() {
+        return a + b;
     }
 
-    public void razn() {
-        result = a - b;
-        title = "Разность чисел: " + result;
+    public double razn() {
+        return a - b;
     }
 
-    public void proizv() {
-        result = a * b;
-        title = "Произведение чисел: " + result;
+    public double proizv() {
+        return a * b;
     }
 
-    public void middle() {
-        result = (a + b) / 2;
-        title = "Среднее значение чисел: " + result;
+    public double middle() {
+        return (a + b) / 2;
     }
 
-    public void max() {
+    public double max() {
         if (a < b) {
-            result = b;
+            return b;
         } else {
-            result = a;
+            return a;
         }
-        title = "Максимальное из чисел: " + result;
     }
 
-    public void min() {
+    public double min() {
         if (a < b) {
-            result = a;
+            return a;
         } else {
-            result = b;
+            return b;
         }
-        title = "Минимальное из чисел: " + result;
-    }
-
-    public void print() {
-        System.out.println(title);
     }
 
 }
