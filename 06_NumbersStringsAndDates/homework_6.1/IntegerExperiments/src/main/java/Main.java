@@ -22,11 +22,11 @@ public class Main {
    */
 
     public static int sumDigits(Integer number) {
-        String temp = number.toString();
         int sum = 0;
         if (number == null) {
             return -1;
         } else {
+            String temp = number.toString();
             for (int i = 0; i < temp.length(); i++) {
                 sum += Character.getNumericValue(temp.charAt(i));
             }
