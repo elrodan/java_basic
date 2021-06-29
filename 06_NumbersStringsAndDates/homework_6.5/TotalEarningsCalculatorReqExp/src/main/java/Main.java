@@ -16,7 +16,7 @@ public class Main {
       totalSum += Integer.parseInt(matcher.group(1));
     }
     System.out.println(totalSum);
-    return 1;
+    return totalSum;
   }
 
 }
