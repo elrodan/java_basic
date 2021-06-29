@@ -11,11 +11,12 @@ public class Main {
   public static int calculateSalarySum(String text){
     Pattern pattern = Pattern.compile("(\\d+)");
     Matcher matcher = pattern.matcher(text);
-    int totalSum = 0;
+    Integer totalSum = 0;
     while (matcher.find()) {
       totalSum += Integer.parseInt(matcher.group(1));
     }
-    return totalSum;
+    System.out.println(totalSum);
+    return 1;
   }
 
 }
