@@ -1,4 +1,7 @@
+package main.java;
+
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class Main {
 
@@ -10,7 +13,15 @@ public class Main {
       if (input.equals("0")) {
         break;
       }
-      //TODO:напишите ваш код тут, результат вывести в консоль.
+      String clearPhone = input.replaceAll("[\\D]", "");
+      Pattern pattern = Pattern.compile("^[789][\\d+]{9}$|^[78][\\d+]{10}$");
+      Matcher matcher = pattern.matcher(clearPhone);
+      if (matcher.find()) {
+        System.out.println(clearPhone.replaceAll("^[8][9]|^[9]", "79"));
+      } else {
+        System.out.println("Неверный формат номера");
+      }
+
     }
   }
 
