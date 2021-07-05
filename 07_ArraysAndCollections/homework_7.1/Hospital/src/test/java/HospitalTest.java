@@ -1,7 +1,11 @@
+package test.java;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 import java.util.stream.IntStream;
+
+import main.java.Hospital;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
