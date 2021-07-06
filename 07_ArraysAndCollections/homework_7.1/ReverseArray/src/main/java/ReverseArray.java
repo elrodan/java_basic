@@ -14,4 +14,20 @@ public class ReverseArray {
         }
         return strings;
     }
+
+    public static String[][] rotateArray (String[][] sourceArr, int numberOfTimes) {
+        int size = sourceArr.length;
+        int count = 0;
+        while (count < numberOfTimes) {
+            String[][] rotateArr = new String[size][size];
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    rotateArr[i][j] = sourceArr[size - j - 1][i];
+                }
+            }
+            sourceArr = rotateArr;
+            count++;
+        }
+        return sourceArr;
+    }
 }
