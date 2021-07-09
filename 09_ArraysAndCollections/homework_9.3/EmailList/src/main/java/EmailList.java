@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -20,8 +22,9 @@ public class EmailList {
         }
     }
 
-    public TreeSet<String> getSortedEmails() {
-        return emailList;
+    public List<String> getSortedEmails() {
+        ArrayList<String> emailListFinal = new ArrayList<>(emailList);
+        return emailListFinal;
     }
 
 }
