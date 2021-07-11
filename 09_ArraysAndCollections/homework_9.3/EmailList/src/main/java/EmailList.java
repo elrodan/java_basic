@@ -13,7 +13,7 @@ public class EmailList {
     TreeSet<String> emailList = new TreeSet<>();
 
     public void add(String email) {
-        Pattern pattern = Pattern.compile("\\w+@\\w+\\.(ru|com)");
+        Pattern pattern = Pattern.compile(".+@.+\\..+");
         Matcher matcher = pattern.matcher(email);
         if (matcher.find()) {
             emailList.add(email.toLowerCase(Locale.ROOT));
