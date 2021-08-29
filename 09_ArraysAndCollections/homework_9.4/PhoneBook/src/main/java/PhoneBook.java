@@ -15,12 +15,13 @@ public class PhoneBook {
         if (checkContact(name, phone)) {
             phoneBook.put(phone, name);
         }
-        // проверьте корректность формата имени и телефона
-        // если такой номер уже есть в списке, то перезаписать имя абонента
     }
 
     public String getNameByPhone(String phone) {
-        String contact = phoneBook.get(phone) + " - " + phone;
+        String contact = "";
+        if (phoneBook.get(phone) != null) {
+            contact = phoneBook.get(phone) + " - " + phone;
+        }
         return contact;
     }
 
@@ -42,7 +43,7 @@ public class PhoneBook {
 
     public boolean checkContact(String name, String phone) {
         String clearPhone = phone.replaceAll("[\\D]", "");
-        Pattern patternPhone = Pattern.compile("^[789][\\d+]{9}$|^[78][\\d+]{10}$");
+        Pattern patternPhone = Pattern.compile("^[78][\\d+]{5,}$");
         Matcher matcherPhone = patternPhone.matcher(clearPhone);
         Pattern patternName = Pattern.compile("[А-Я][а-я]+");
         Matcher matcherName = patternName.matcher(name);

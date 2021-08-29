@@ -32,9 +32,9 @@ public class Main {
                         scanner.nextLine();
                     }
                 }
-            } else if(input.matches("^[789][\\d+]{9}$|^[78][\\d+]{10}$")) {
-                if (!phoneBook.getPhonesByName(input).isEmpty()) {
-                    System.out.println(phoneBook.getPhonesByName(input));
+            } else if(input.matches("^[78][\\d+]{5,}$")) {
+                if (!phoneBook.getNameByPhone(input).isEmpty()) {
+                    System.out.println(phoneBook.getNameByPhone(input));
                 } else {
                     String phone = input;
                     System.out.println("Такого номера нет в телефонной книге." +
