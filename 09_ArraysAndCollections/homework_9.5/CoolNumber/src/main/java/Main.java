@@ -1,3 +1,10 @@
+package main.java;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.TreeSet;
+
 public class Main {
     /*
     TODO:
@@ -7,6 +14,15 @@ public class Main {
      */
 
     public static void main(String[] args) {
-
+        Scanner scanner = new Scanner(System.in);
+        List<String> list = CoolNumbers.generateCoolNumbers();
+        HashSet<String> setHash = new HashSet<>(list);
+        TreeSet<String> setTree = new TreeSet<>(list);
+        System.out.println("Введите искомый номер");
+        String input = scanner.nextLine();
+        CoolNumbers.bruteForceSearchInList(CoolNumbers.generateCoolNumbers(), input);
+        CoolNumbers.binarySearchInList(CoolNumbers.generateCoolNumbers(), input);
+        CoolNumbers.searchInHashSet(setHash, input);
+        CoolNumbers.searchInTreeSet(setTree, input);
     }
 }
