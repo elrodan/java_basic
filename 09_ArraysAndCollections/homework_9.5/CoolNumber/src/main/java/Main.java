@@ -20,8 +20,8 @@ public class Main {
         TreeSet<String> setTree = new TreeSet<>(list);
         System.out.println("Введите искомый номер");
         String input = scanner.nextLine();
-        CoolNumbers.bruteForceSearchInList(CoolNumbers.generateCoolNumbers(), input);
-        CoolNumbers.binarySearchInList(CoolNumbers.generateCoolNumbers(), input);
+        CoolNumbers.bruteForceSearchInList(list, input);
+        CoolNumbers.binarySearchInList(list, input);
         CoolNumbers.searchInHashSet(setHash, input);
         CoolNumbers.searchInTreeSet(setTree, input);
     }

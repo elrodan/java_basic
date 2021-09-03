@@ -32,11 +32,8 @@ public class CoolNumbers {
     public static boolean bruteForceSearchInList(List<String> list, String number) {
         boolean outcome = false;
         long startTime = System.nanoTime();
-        for (String s : list) {
-            if (s.equals(number)) {
+        if (list.contains(number)) {
                 outcome = true;
-                break;
-            }
         }
         long estimatedTime = System.nanoTime() - startTime;
         System.out.println("Поиск перебором: номер " + (!outcome ? "не найден" : "найден") + ", поиск занял " + estimatedTime + "нс");
