@@ -1,15 +1,21 @@
+package main.java;
+
 public class BankAccount {
+  protected double bankAccount;
 
   public double getAmount() {
-    //TODO: реализуйте метод и удалите todo
-    return 0;
+    return bankAccount;
   }
 
   public void put(double amountToPut) {
-    //TODO: реализуйте метод и удалите todo
+    if (amountToPut > 0) {
+      bankAccount += amountToPut;
+    }
   }
 
   public void take(double amountToTake) {
-    //TODO: реализуйте метод и удалите todo
+    if (bankAccount >= amountToTake && amountToTake > 0) {
+      bankAccount -= amountToTake;
+    }
   }
 }

@@ -1,3 +1,7 @@
+package test.java;
+
+import main.java.BankAccount;
+import main.java.DepositAccount;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
