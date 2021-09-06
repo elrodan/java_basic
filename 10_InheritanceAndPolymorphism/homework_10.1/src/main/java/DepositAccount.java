@@ -15,8 +15,14 @@ public class DepositAccount extends BankAccount {
     @Override
     public void take(double amountToTake) {
         LocalDate nowDate = LocalDate.now();
-        if (nowDate.compareTo(lastIncome) >= 1 && amountToTake <= bankAccount) {
+        LocalDate checkDate = lastIncome.plusMonths(1);
+        if (nowDate.compareTo(checkDate) >= 1 && amountToTake <= bankAccount) {
             super.take(amountToTake);
         }
+    }
+
+    @Override
+    boolean send(BankAccount receiver, double amount) {
+        return super.send(receiver, amount);
     }
 }

@@ -4,13 +4,14 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        BankAccount first = new BankAccount();
-        first.put(10000);
+        CardAccount first = new CardAccount();
+        CardAccount second = new CardAccount();
+        first.put(1000);
         System.out.println(first.getAmount());
         first.take(100);
         System.out.println(first.getAmount());
-        CardAccount person = new CardAccount();
-        person.take(100);
+        first.send(second, 100);
         System.out.println(first.getAmount());
+        System.out.println(second.getAmount());
     }
 }

@@ -15,7 +15,17 @@ public class BankAccount {
 
   public void take(double amountToTake) {
     if (bankAccount >= amountToTake && amountToTake > 0) {
-      bankAccount -= amountToTake;
+      this.bankAccount -= amountToTake;
+    }
+  }
+
+  boolean send(BankAccount receiver, double amount) {
+    if (bankAccount >= amount && amount > 0) {
+      this.take(amount);
+      receiver.put(amount);
+      return true;
+    } else {
+      return false;
     }
   }
 }
