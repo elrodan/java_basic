@@ -11,6 +11,6 @@ public class CardAccount extends BankAccount {
 
     @Override
     boolean send(BankAccount receiver, double amount) {
-        return super.send(receiver, amount);
+        return send(receiver, amount);
     }
 }
