@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        CardAccount first = new CardAccount();
-        CardAccount second = new CardAccount();
+        DepositAccount first = new DepositAccount();
+        DepositAccount second = new DepositAccount();
         first.put(1000);
         System.out.println(first.getAmount());
         first.take(100);

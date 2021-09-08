@@ -3,7 +3,7 @@ package main.java;
 import java.time.LocalDate;
 
 public class DepositAccount extends BankAccount {
-    protected LocalDate lastIncome;
+    private LocalDate lastIncome;
     @Override
     public void put(double amountToPut) {
         if (amountToPut > 0) {
@@ -23,6 +23,13 @@ public class DepositAccount extends BankAccount {
 
     @Override
     boolean send(BankAccount receiver, double amount) {
-        return super.send(receiver, amount);
+        LocalDate nowDate = LocalDate.now();
+        LocalDate checkDate = lastIncome.plusMonths(1);
+        if (nowDate.compareTo(checkDate) >= 1 && super.getAmount() <= super.getAmount()) {
+            return super.send(receiver, amount);
+        } else {
+            return false;
+        }
+
     }
 }
