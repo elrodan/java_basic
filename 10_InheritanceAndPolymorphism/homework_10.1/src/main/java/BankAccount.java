@@ -1,7 +1,7 @@
 package main.java;
 
 public class BankAccount {
-  protected double bankAccount;
+  private double bankAccount;
 
   public double getAmount() {
     return bankAccount;

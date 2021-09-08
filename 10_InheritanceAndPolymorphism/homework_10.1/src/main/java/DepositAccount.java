@@ -16,7 +16,7 @@ public class DepositAccount extends BankAccount {
     public void take(double amountToTake) {
         LocalDate nowDate = LocalDate.now();
         LocalDate checkDate = lastIncome.plusMonths(1);
-        if (nowDate.compareTo(checkDate) >= 1 && amountToTake <= bankAccount) {
+        if (nowDate.compareTo(checkDate) >= 1 && amountToTake <= super.getAmount()) {
             super.take(amountToTake);
         }
     }
