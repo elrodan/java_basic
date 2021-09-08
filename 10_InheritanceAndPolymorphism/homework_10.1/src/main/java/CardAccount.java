@@ -9,8 +9,8 @@ public class CardAccount extends BankAccount {
         }
     }
 
-    /*@Override
+    @Override
     boolean send(BankAccount receiver, double amount) {
         return super.send(receiver, amount);
-    }*/
+    }
 }
