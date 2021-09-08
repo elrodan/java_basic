@@ -6,10 +6,8 @@ public class DepositAccount extends BankAccount {
     private LocalDate lastIncome;
     @Override
     public void put(double amountToPut) {
-        if (amountToPut > 0) {
-            lastIncome = LocalDate.now();
-            super.put(amountToPut);
-        }
+        lastIncome = LocalDate.now();
+        super.put(amountToPut);
     }
 
     @Override
