@@ -6,9 +6,4 @@ public class CardAccount extends BankAccount {
         double amountWithInterest = amountToTake + amountToTake/100;
             super.take(amountWithInterest);
     }
-
-    @Override
-    boolean send(BankAccount receiver, double amount) {
-        return send(receiver, amount);
-    }
 }
