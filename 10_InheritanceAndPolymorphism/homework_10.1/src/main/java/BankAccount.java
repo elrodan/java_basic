@@ -21,8 +21,11 @@ public class BankAccount {
 
   boolean send(BankAccount receiver, double amount) {
     if (bankAccount >= amount && amount > 0) {
+      double amountAfterTake = bankAccount;
       this.take(amount);
-      receiver.put(amount);
+      if (amountAfterTake > this.getAmount()) {
+        receiver.put(amount);
+      }
       return true;
     } else {
       return false;
