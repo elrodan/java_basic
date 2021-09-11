@@ -1,3 +1,6 @@
+package test.java;
+
+import main.java.LegalPerson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
