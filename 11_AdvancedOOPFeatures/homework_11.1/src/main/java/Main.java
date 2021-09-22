@@ -1,3 +1,6 @@
+package main.java;
+
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -10,6 +13,7 @@ public class Main {
     }
 
     public static void sortBySalaryAndAlphabet(List<Employee> staff) {
-        //TODO Метод должен отсортировать сотрудников по заработной плате и алфавиту.
+        staff.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+        staff.sort((o1, o2) -> o1.getSalary().compareTo(o2.getSalary()));
     }
 }
