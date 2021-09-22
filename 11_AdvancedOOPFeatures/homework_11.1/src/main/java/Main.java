@@ -1,7 +1,9 @@
 package main.java;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Main {
 
@@ -13,7 +15,6 @@ public class Main {
     }
 
     public static void sortBySalaryAndAlphabet(List<Employee> staff) {
-        staff.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
-        staff.sort((o1, o2) -> o1.getSalary().compareTo(o2.getSalary()));
+        staff.sort((o1, o2) -> Objects.equals(o1.getSalary(), o2.getSalary()) ? o1.getName().compareTo(o2.getName()) : o1.getSalary().compareTo(o2.getSalary()));
     }
 }
