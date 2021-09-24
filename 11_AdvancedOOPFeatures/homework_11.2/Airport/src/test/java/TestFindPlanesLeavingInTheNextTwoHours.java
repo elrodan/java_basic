@@ -1,17 +1,21 @@
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+package test.java;
 
 import com.skillbox.airport.Aircraft;
 import com.skillbox.airport.Airport;
 import com.skillbox.airport.Flight;
 import com.skillbox.airport.Flight.Type;
 import com.skillbox.airport.Terminal;
+import main.java.Main;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 @DisplayName("Поиск рейсов")
 public class TestFindPlanesLeavingInTheNextTwoHours {

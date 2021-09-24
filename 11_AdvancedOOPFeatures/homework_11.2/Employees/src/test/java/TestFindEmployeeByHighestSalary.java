@@ -1,3 +1,7 @@
+package test.java;
+
+import main.java.Employee;
+import main.java.Main;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
