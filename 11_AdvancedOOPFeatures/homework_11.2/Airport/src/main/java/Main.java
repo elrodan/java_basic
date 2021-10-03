@@ -19,7 +19,8 @@ public class Main {
                 .flatMap(t -> t.getFlights().stream())
                 .filter(f -> f.getType() == Flight.Type.DEPARTURE)
                 .filter(f -> f.getDate().toInstant().atZone(ZoneId.systemDefault())
-                        .toLocalDateTime().isBefore(currentTime.plusHours(2)))
+                        .toLocalDateTime().isBefore(currentTime.plusHours(2)) && f.getDate().toInstant()
+                        .atZone(ZoneId.systemDefault()).toLocalDateTime().isAfter(currentTime))
                 .collect(Collectors.toList());
     }
 
