@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,14 @@ public class CustomerStorage {
         final int INDEX_PHONE = 3;
 
         String[] components = data.split("\\s+");
+        if (components.length != 4) {
+            throw new IllegalArgumentException("Неверный формат команды. Верный формат \n " +
+                    "add Василий Петров vasily.petrov@gmail.com +79215637722");
+        } else if (!components[2].matches(".+@.+\\..+")) {
+            throw new IllegalArgumentException("Неверный формат e-mail. Верный формат: vasily.petrov@gmail.com");
+        } else if (!components[3].matches("^[+79][\\d+]{11}$")) {
+            throw new IllegalArgumentException("Неверный формат номера. Верный формат: +79215637722");
+        }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
         storage.put(name, new Customer(name, components[INDEX_PHONE], components[INDEX_EMAIL]));
     }
