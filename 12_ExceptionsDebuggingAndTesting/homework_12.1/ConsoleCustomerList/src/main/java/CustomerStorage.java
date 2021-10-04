@@ -20,9 +20,9 @@ public class CustomerStorage {
         if (components.length != 4) {
             throw new IllegalArgumentException("Неверный формат команды. Верный формат \n " +
                     "add Василий Петров vasily.petrov@gmail.com +79215637722");
-        } else if (!components[2].matches(".+@.+\\..+")) {
+        } else if (!components[INDEX_EMAIL].matches(".+@.+\\..+")) {
             throw new IllegalArgumentException("Неверный формат e-mail. Верный формат: vasily.petrov@gmail.com");
-        } else if (!components[3].matches("^[+79][\\d+]{11}$")) {
+        } else if (!components[INDEX_PHONE].matches("^[+79][\\d+]{11}$")) {
             throw new IllegalArgumentException("Неверный формат номера. Верный формат: +79215637722");
         }
         String name = components[INDEX_NAME] + " " + components[INDEX_SURNAME];
