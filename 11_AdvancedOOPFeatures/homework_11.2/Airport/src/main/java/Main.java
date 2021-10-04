@@ -15,11 +15,12 @@ public class Main {
 
     public static List<Flight> findPlanesLeavingInTheNextTwoHours(Airport airport) {
         LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime timeInterval = currentTime.plusHours(2);
         return airport.getTerminals().stream()
                 .flatMap(t -> t.getFlights().stream())
                 .filter(f -> f.getType() == Flight.Type.DEPARTURE)
                 .filter(f -> f.getDate().toInstant().atZone(ZoneId.systemDefault())
-                        .toLocalDateTime().isBefore(currentTime.plusHours(2)) && f.getDate().toInstant()
+                        .toLocalDateTime().isBefore(timeInterval) && f.getDate().toInstant()
                         .atZone(ZoneId.systemDefault()).toLocalDateTime().isAfter(currentTime))
                 .collect(Collectors.toList());
     }
