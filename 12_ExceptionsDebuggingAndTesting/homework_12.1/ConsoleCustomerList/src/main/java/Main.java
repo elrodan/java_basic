@@ -18,13 +18,20 @@ public class Main {
         while (true) {
             String command = scanner.nextLine();
             String[] tokens = command.split("\\s+", 2);
-
             if (tokens[0].equals("add")) {
+                try {
                     executor.addCustomer(tokens[1]);
+                } catch (IllegalArgumentException ex) {
+                    System.out.println(ex.getMessage());
+                }
             } else if (tokens[0].equals("list")) {
                 executor.listCustomers();
             } else if (tokens[0].equals("remove")) {
-                executor.removeCustomer(tokens[1]);
+                try {
+                    executor.removeCustomer(tokens[1]);
+                } catch (IndexOutOfBoundsException ex) {
+                    System.out.println("Имя не может быть пустым");
+                }
             } else if (tokens[0].equals("count")) {
                 System.out.println("There are " + executor.getCount() + " customers");
             } else if (tokens[0].equals("help")) {
