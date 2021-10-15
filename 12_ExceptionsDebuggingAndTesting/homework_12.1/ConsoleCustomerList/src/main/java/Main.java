@@ -20,11 +20,7 @@ public class Main {
             String[] tokens = command.split("\\s+", 2);
 
             if (tokens[0].equals("add")) {
-                try {
                     executor.addCustomer(tokens[1]);
-                } catch (IllegalArgumentException ex) {
-                    System.out.println(ex.getMessage());
-                }
             } else if (tokens[0].equals("list")) {
                 executor.listCustomers();
             } else if (tokens[0].equals("remove")) {

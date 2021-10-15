@@ -1,5 +1,7 @@
-import core.Line;
-import core.Station;
+package main.java;
+
+import main.java.core.Line;
+import main.java.core.Station;
 
 import java.util.*;
 import java.util.stream.Collectors;

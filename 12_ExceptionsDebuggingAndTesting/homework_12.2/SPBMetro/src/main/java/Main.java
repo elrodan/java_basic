@@ -1,5 +1,7 @@
-import core.Line;
-import core.Station;
+package main.java;
+
+import main.java.core.Line;
+import main.java.core.Station;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
