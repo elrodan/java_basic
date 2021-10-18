@@ -36,6 +36,12 @@ public class RouteCalculatorTest extends TestCase {
         index.addLine(lineSecond);
         index.addLine(lIneThird);
         stations.forEach(s -> index.addStation(s));
+        lineFirst.addStation(index.getStation("Горьковская"));
+        lineFirst.addStation(index.getStation("Невский проспект"));
+        lineSecond.addStation(index.getStation("Гостиный двор"));
+        lineSecond.addStation(index.getStation("Маяковская"));
+        lIneThird.addStation(index.getStation("Площадь восстания"));
+        lIneThird.addStation(index.getStation("Чернышевская"));
         connect1.add(index.getStation("Невский проспект"));
         connect1.add(index.getStation("Гостиный двор"));
         connect2.add(index.getStation("Маяковская"));
@@ -54,7 +60,29 @@ public class RouteCalculatorTest extends TestCase {
 
     @Test
     public void testGetShortestRoute() {
+        List<Station> actual = calculator.getShortestRoute(index.getStation("Горьковская"), index.getStation("Чернышевская"));
+        List<Station> expected = stations;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetRouteOnTheLine() {
         List<Station> actual = calculator.getShortestRoute(index.getStation("Горьковская"), index.getStation("Невский проспект"));
+        List<Station> expected = index.getLine(1).getStations();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetRouteWithOneConnection() {
+        List<Station> actual = calculator.getShortestRoute(index.getStation("Горьковская"), index.getStation("Маяковская"));
+        List<Station> expected = index.getLine(1).getStations();
+        expected.addAll(index.getLine(2).getStations());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetRouteWithTwoConnections() {
+        List<Station> actual = calculator.getShortestRoute(index.getStation("Горьковская"), index.getStation("Чернышевская"));
         List<Station> expected = stations;
         assertEquals(expected, actual);
     }
