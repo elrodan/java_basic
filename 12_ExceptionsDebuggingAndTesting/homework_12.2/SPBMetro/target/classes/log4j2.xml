@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="ERROR">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <File name="Search" fileName="logs/search.log">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL" />
+        </File>
+        <File name="InputErrors" fileName="logs/input_errors.log">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL" />
+        </File>
+        <File name="Exceptions" fileName="logs/exceptions.log">
+            <PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL" />
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="Search" level="INFO"/>
+            <appender-ref ref="InputErrors" level="WARN"/>
+            <appender-ref ref="Exceptions" level="ERROR"/>
+        </root>
+    </loggers>
+</configuration>
