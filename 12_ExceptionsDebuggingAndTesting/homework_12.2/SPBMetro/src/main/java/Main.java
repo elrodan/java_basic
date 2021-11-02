@@ -39,6 +39,7 @@ public class Main {
 
                 System.out.println("Длительность: " +
                         RouteCalculator.calculateDuration(route) + " минут");
+                throw new Exception("Test");
             } catch (Exception ex) {
                 logger.error("Error", ex);
             }
