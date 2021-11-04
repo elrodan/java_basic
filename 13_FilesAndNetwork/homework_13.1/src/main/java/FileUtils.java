@@ -1,6 +1,9 @@
 package main.java;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 
 public class FileUtils {
@@ -8,14 +11,7 @@ public class FileUtils {
     public static long calculateFolderSize(String path) {
         long size = 0;
         try {
-            File folder = new File(path);
-            if (folder.isFile()) {
-                return folder.length();
-            }
-            File[] files = folder.listFiles();
-            for (File file : files) {
-                size += calculateFolderSize(file.getPath());
-            }
+           size = Files.walk(Paths.get(path)).map(Path::toFile).filter(File::isFile).mapToLong(File::length).sum();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -23,20 +19,12 @@ public class FileUtils {
     }
 
     public static String getSizeFile (long size) {
-        DecimalFormat df = new DecimalFormat("0.00");
-        float sizeKb = 1024.0f;
-        float sizeMb = sizeKb * sizeKb;
-        float sizeGb = sizeMb * sizeKb;
-        float sizeTb = sizeGb * sizeKb;
-
-        if (size < sizeMb) {
-            return df.format(size / sizeKb) + " Kb";
-        } else if (size < sizeGb) {
-            return df.format(size / sizeMb) + " Mb";
-        } else if (size < sizeTb) {
-            return df.format(size / sizeGb) + " Gb";
-        } else {
-            return df.format(size / sizeTb) + " Tb";
+        if (size <= 0) {
+            return "0";
         }
+        final String[] units = new String[] {"B", "KB", "MB", "GB", "TB"};
+        int digitGroups = (int)(Math.log10(size) / Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups))
+                + " " + units[digitGroups];
     }
 }
