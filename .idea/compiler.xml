@@ -7,9 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SPBMetro" />
+        <module name="read-movements-csv" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="read-movements-csv" target="11" />
       <module name="SPBMetro" target="11" />
     </bytecodeTargetLevel>
   </component>
