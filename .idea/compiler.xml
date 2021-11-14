@@ -8,9 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SPBMetro" />
         <module name="read-movements-csv" />
+        <module name="homework_13.4" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="homework_13.4" target="11" />
       <module name="read-movements-csv" target="11" />
       <module name="SPBMetro" target="11" />
     </bytecodeTargetLevel>
