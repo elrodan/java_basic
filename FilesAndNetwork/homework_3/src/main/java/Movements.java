@@ -2,7 +2,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Movements {
@@ -10,7 +9,6 @@ public class Movements {
     private String pathMovementsCsv;
     private List<String[]> parseLines;
     private BankStatement bankStatement;
-    Map<String, Double> test = new HashMap<>();
 
     public Movements(String pathMovementsCsv) {
         this.pathMovementsCsv = pathMovementsCsv;
@@ -53,18 +51,16 @@ public class Movements {
     private void setBankStatement() {
         bankStatement.setExpenseSum(getExpenseSum());
         bankStatement.setIncomeSum(getIncomeSum());
+        HashMap<String, Double> list = new HashMap<>();
         for (String[] l : parseLines) {
             if (!l[7].equals("0")) {
-                if (test.containsKey(l[5].split("\\s{4}")[1].trim())) {
-                    test.put(l[5].split("\\s{4}")[1].trim(), test.get(l[5].split("\\s{4}")[1].trim()) + Double.parseDouble(l[7]));
+                if (list.containsKey(l[5].split("\\s{4}")[1].trim())) {
+                    list.put(l[5].split("\\s{4}")[1].trim(), list.get(l[5].split("\\s{4}")[1].trim()) + Double.parseDouble(l[7]));
                 } else {
-                    test.put(l[5].split("\\s{4}")[1].trim(), Double.parseDouble(l[7]));
+                    list.put(l[5].split("\\s{4}")[1].trim(), Double.parseDouble(l[7]));
                 }
             }
         }
-        System.out.println("Суммы расходов по организациям:");
-        for (String key : test.keySet()) {
-            System.out.println(key + " " + test.get(key));
-        }
+        bankStatement.setOrganizationsExpense(list);
     }
 }
