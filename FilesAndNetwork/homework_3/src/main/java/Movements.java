@@ -1,23 +1,27 @@
-<<<<<<< HEAD
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-=======
->>>>>>> parent of af1f74c (15.9 Практическая работа №3)
 public class Movements {
 
+    private String pathMovementsCsv;
+    private List<String[]> parseLines;
+    private BankStatement bankStatement;
+
     public Movements(String pathMovementsCsv) {
+        this.pathMovementsCsv = pathMovementsCsv;
+        parseLines();
+        bankStatement = new BankStatement();
+        setBankStatement();
     }
 
     public double getExpenseSum() {
-        return 0.0;
+        return getSum(7);
     }
 
     public double getIncomeSum() {
-<<<<<<< HEAD
         return getSum(6);
     }
 
@@ -58,8 +62,5 @@ public class Movements {
             }
         }
         bankStatement.setOrganizationsExpense(list);
-=======
-        return 0.0;
->>>>>>> parent of af1f74c (15.9 Практическая работа №3)
     }
 }
