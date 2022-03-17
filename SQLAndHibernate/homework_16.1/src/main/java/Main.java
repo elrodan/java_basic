@@ -12,9 +12,9 @@ public class Main {
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
 
         Session session = sessionFactory.openSession();
-        Course course = session.get(Course.class, 3);
-        System.out.println("Название курса: " + course.getName() +
-                "\nКоличество студентов: " + course.getStudentsCount());
+        Course course = session.get(Course.class, 1);
+        PurchaseList purchaseList = session.get(PurchaseList.class, new PurchaseList.Key("Амбражевич Порфирий", "Веб-разработчик c 0 до PRO"));
+        System.out.println(purchaseList.getPrice());
 
         sessionFactory.close();
     }
