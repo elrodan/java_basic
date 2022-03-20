@@ -61,29 +61,29 @@ public class PurchaseList {
     public static class Key implements Serializable {
 
         @Column(name = "student_name")
-        private String studentId;
+        private String studentName;
         @Column(name = "course_name")
-        private String courseId;
+        private String courseName;
 
         public String getStudentId() {
-            return studentId;
+            return studentName;
         }
 
         public void setStudentId(String studentId) {
-            this.studentId = studentId;
+            this.studentName = studentId;
         }
 
         public String getCourseId() {
-            return courseId;
+            return courseName;
         }
 
         public void setCourseId(String courseId) {
-            this.courseId = courseId;
+            this.courseName = courseId;
         }
 
-        public Key(String studentId, String courseId) {
-            this.studentId = studentId;
-            this.courseId = courseId;
+        public Key(String studentName, String courseName) {
+            this.studentName = studentName;
+            this.courseName = courseName;
         }
 
         @Override
@@ -91,12 +91,12 @@ public class PurchaseList {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Key key = (Key) o;
-            return Objects.equals(studentId, key.studentId) && Objects.equals(courseId, key.courseId);
+            return Objects.equals(studentName, key.studentName) && Objects.equals(courseName, key.courseName);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(studentId, courseId);
+            return Objects.hash(studentName, courseName);
         }
     }
 }
