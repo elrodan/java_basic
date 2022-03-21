@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Multithreading/ImageResizer/ImageResizer.iml" filepath="$PROJECT_DIR$/Multithreading/ImageResizer/ImageResizer.iml" />
       <module fileurl="file://$PROJECT_DIR$/FilesAndNetwork/Metro/Metro.iml" filepath="$PROJECT_DIR$/FilesAndNetwork/Metro/Metro.iml" />
       <module fileurl="file://$PROJECT_DIR$/13_FilesAndNetwork/homework_13.4/homework_13.4.iml" filepath="$PROJECT_DIR$/13_FilesAndNetwork/homework_13.4/homework_13.4.iml" />
       <module fileurl="file://$PROJECT_DIR$/SQLAndHibernate/homework_16.1/homework_16.1.iml" filepath="$PROJECT_DIR$/SQLAndHibernate/homework_16.1/homework_16.1.iml" />

@@ -1,51 +1,41 @@
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
+    public static int CORES = Runtime.getRuntime().availableProcessors();
+
     public static void main(String[] args) {
-        String srcFolder = "/users/sortedmap/Desktop/src";
-        String dstFolder = "/users/sortedmap/Desktop/dst";
 
-        File srcDir = new File(srcFolder);
+        String srcFolder = "img/src";
+        String dstFolder = "img/dst";
 
-        long start = System.currentTimeMillis();
-
-        File[] files = srcDir.listFiles();
-
-        try {
-            for (File file : files) {
-                BufferedImage image = ImageIO.read(file);
-                if (image == null) {
-                    continue;
-                }
-
-                int newWidth = 300;
-                int newHeight = (int) Math.round(
-                    image.getHeight() / (image.getWidth() / (double) newWidth)
-                );
-                BufferedImage newImage = new BufferedImage(
-                    newWidth, newHeight, BufferedImage.TYPE_INT_RGB
-                );
-
-                int widthStep = image.getWidth() / newWidth;
-                int heightStep = image.getHeight() / newHeight;
-
-                for (int x = 0; x < newWidth; x++) {
-                    for (int y = 0; y < newHeight; y++) {
-                        int rgb = image.getRGB(x * widthStep, y * heightStep);
-                        newImage.setRGB(x, y, rgb);
-                    }
-                }
-
-                File newFile = new File(dstFolder + "/" + file.getName());
-                ImageIO.write(newImage, "jpg", newFile);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        File folder = new File(dstFolder);
+        if (!folder.exists()) {
+            folder.mkdir();
         }
 
-        System.out.println("Duration: " + (System.currentTimeMillis() - start));
+        File srcDir = new File(srcFolder);
+        File[] files = srcDir.listFiles();
+        int newWidth = 300;
+        int filesLength = files.length;
+        int threadLength;
+        int srcPos = 0;
+
+        ExecutorService executor = Executors.newFixedThreadPool(CORES);
+
+        for (int i = CORES; i > 0; i--) {
+            threadLength = filesLength / i;
+            File[] filesInThread = new File[threadLength];
+            System.arraycopy(files, srcPos, filesInThread, 0, threadLength);
+            ImageResizer resizer = new ImageResizer(filesInThread, dstFolder, newWidth);
+            executor.execute(resizer);
+
+            filesLength = filesLength - threadLength;
+            srcPos = srcPos + threadLength;
+        }
+
+        executor.shutdown();
     }
 }
