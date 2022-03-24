@@ -7,17 +7,26 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ImageResizer" />
+        <module name="BookLibrary" />
         <module name="SPBMetro" />
         <module name="homework_13.4" />
         <module name="homework_16.1" />
+        <module name="ToDoList" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="BookLibrary" target="8" />
       <module name="homework_13.4" target="11" />
       <module name="homework_16.1" target="16" />
       <module name="ImageResizer" target="11" />
       <module name="read-movements-csv" target="11" />
       <module name="SPBMetro" target="11" />
+      <module name="ToDoList" target="16" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BookLibrary" options="-parameters" />
+    </option>
   </component>
 </project>
