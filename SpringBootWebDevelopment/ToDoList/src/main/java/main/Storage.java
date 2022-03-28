@@ -18,8 +18,7 @@ public class Storage {
     }
 
     public static List<Todo> getAllTodo() {
-        ArrayList<Todo> todoArrayList = new ArrayList<Todo>();
-        todoArrayList.addAll(todos.values());
+        ArrayList<Todo> todoArrayList = new ArrayList<Todo>(todos.values());
         return todoArrayList;
     }
 
