@@ -1,11 +1,12 @@
 package main;
 
+import main.model.Todo;
 import main.model.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import main.model.Todo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class TodoController {
         return todos;
     }
 
-    @PostMapping("/todo/")
+    @PostMapping(value = "/todo/", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public int add(@RequestBody Todo todo) {
         Todo newTodo = todoRepository.save(todo);
         return newTodo.getId();
@@ -36,10 +37,8 @@ public class TodoController {
     @GetMapping("/todo/{id}")
     public ResponseEntity get(@PathVariable int id) {
         Optional<Todo> optionalTodo = todoRepository.findById(id);
-        if (!optionalTodo.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-        return new ResponseEntity(optionalTodo.get(), HttpStatus.OK);
+        return optionalTodo.map(todo -> new ResponseEntity(todo, HttpStatus.OK)).orElseGet(()
+                -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
 
     @PutMapping("/todo/{id}")
@@ -53,7 +52,7 @@ public class TodoController {
     @DeleteMapping("/todo/{id}")
     public ResponseEntity delete(@PathVariable int id) {
         Optional<Todo> optionalTodo = todoRepository.findById(id);
-        if (!optionalTodo.isPresent()) {
+        if (optionalTodo.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         todoRepository.deleteById(id);

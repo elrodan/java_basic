@@ -1,14 +1,29 @@
 package main;
 
+import main.model.Todo;
+import main.model.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.util.ArrayList;
 
-@RestController
+@Controller
 public class DefaultController {
+
+    @Autowired
+    TodoRepository todoRepository;
+
     @RequestMapping("/")
-    public String index() {
-        return (new Date()).toString();
+    public String index(Model model) {
+        Iterable<Todo> todoIterable = todoRepository.findAll();
+        ArrayList<Todo> todos = new ArrayList<>();
+        for (Todo todo : todoIterable) {
+            todos.add(todo);
+        }
+        model.addAttribute("todos", todos);
+        model.addAttribute("todosCount", todos.size());
+        return "index";
     }
 }
