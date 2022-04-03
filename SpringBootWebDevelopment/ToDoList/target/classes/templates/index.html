@@ -14,17 +14,22 @@
         <label>Название дела:</label>
         <input id="name" type="text" name="name" value="">
         <label>Описание дела:</label>
-        <input id="description" type="text" name="description" value="">
+        <textarea id="description" rows="10" name="description" value=""></textarea>
         <hr>
         <button id="save-todo">Сохранить</button>
     </form>
 </div>
 <h1>Список дел (<span th:text="${todosCount}">0</span>)</h1>
-<button id="show-add-todo-form">Добавить дело</button>
+<div class="button-block">
+    <button id="show-add-todo-form" type="submit">Добавить дело</button>
+    <button id="delete-all" type="submit">Очистить список</button>
+</div>
 <br><br>
 <div id="todo-list">
-    <div th:each="todo : ${todos}">
+    <div class="todo-item" th:each="todo : ${todos}"  th:attr="data-id=${todo.id}">
         <a href="#" class="todo-link" th:attr="data-id=${todo.id}" th:text="${todo.name}"></a>
+        <button id="edit-todo" th:attr="data-id=${todo.id}"><img src="/img/edit.png"></button>
+        <button id="delete-todo" type="submit" th:attr="data-id=${todo.id}"><img src="/img/cross.png"></button>
     </div>
 </div>
 <p th:text="${someParameter}"></p>

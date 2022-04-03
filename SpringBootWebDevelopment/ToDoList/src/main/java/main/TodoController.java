@@ -28,7 +28,10 @@ public class TodoController {
         return todos;
     }
 
-    @PostMapping(value = "/todo/", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(value = "/todo/",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @ResponseStatus(HttpStatus.CREATED)
     public int add(@RequestBody Todo todo) {
         Todo newTodo = todoRepository.save(todo);
         return newTodo.getId();

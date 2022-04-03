@@ -2,7 +2,14 @@
     font-family: Arial;
 }
 
-#todo-form {
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center
+}
+
+#todo-form,
+#get-todo-form {
     display: none;
     align-items: center;
     justify-content: center;
@@ -15,19 +22,33 @@
     background-color: #88888878;
 }
 
-#todo-form form {
+#get-todo-form {
+    display: flex;
+}
+
+#todo-form form,
+#get-todo-form form {
     background-color: white;
     border: 1px solid #333;
     width: 300px;
     padding: 20px;
 }
 
-#todo-form h2 {
+#todo-form h2,
+#get-todo-form h2 {
     margin-top: 0;
 }
 
-#todo-form label {
+#todo-form label,
+#get-todo-form label {
     display: block;
+}
+
+#todo-form #name,
+#todo-form #description,
+#get-todo-form #name,
+#get-todo-form #description {
+    width: 100%;
 }
 
 #todo-form form > * {
@@ -36,4 +57,48 @@
 
 h4 {
     margin-bottom: 0;
+}
+
+#todo-list {
+    margin-top: 20px;
+}
+
+#show-add-todo-form,
+#delete-all {
+    border-radius: 10px;
+    width: 30%;
+    height: 50px;
+    background-color: orange;
+}
+
+.todo-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.todo-item .text {
+    width: 100%;
+    border: 1px solid black;
+    font-size: 22px;
+}
+
+.todo-link {
+    width: 73%;
+    display: block;
+    padding: 30px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#delete-todo,
+#edit-todo {
+    width: 10%;
+}
+
+#delete-todo img,
+#edit-todo img {
+    width: 100%;
 }
