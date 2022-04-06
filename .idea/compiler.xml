@@ -11,6 +11,7 @@
         <module name="homework_13.4" />
         <module name="homework_16.1" />
         <module name="ToDoList" />
+        <module name="UsersQueue" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
       <module name="read-movements-csv" target="11" />
       <module name="SPBMetro" target="11" />
       <module name="ToDoList" target="11" />
+      <module name="UsersQueue" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
