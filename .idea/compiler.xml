@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MongoShop" />
         <module name="MongoDbStudents" />
         <module name="SPBMetro" />
         <module name="ToDoList" />
@@ -21,6 +22,7 @@
       <module name="homework_16.1" target="16" />
       <module name="ImageResizer" target="11" />
       <module name="MongoDbStudents" target="11" />
+      <module name="MongoShop" target="11" />
       <module name="read-movements-csv" target="11" />
       <module name="SPBMetro" target="11" />
       <module name="ToDoList" target="11" />
